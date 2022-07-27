@@ -9,10 +9,10 @@ export const GameItem: React.FC<{ game: IGameListItem }> = ({ game }) => {
   return (
     <Box>
       <Link to={`/details/${id}`}>
-        <div className="bg-slate-700 drop-shadow-lg rounded-lg pt-1 pb-2 pl-1 pr-1">
+        <div className="bg-slate-700 drop-shadow-lg rounded-lg p-2">
           <h1 className="text-xl font-bold text-white ml-2">{title}</h1>
           <img className="w-full h-full" src={thumbnail} alt={title} />
-          <div className="flex h-[60px] flex-wrap pt-1 pl-2 pr-2">
+          <div className="flex h-[60px] flex-wrap pt-1 px-2">
             <Badge
               variant="solid"
               colorScheme={"orange"}

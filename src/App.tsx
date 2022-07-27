@@ -12,12 +12,12 @@ function App() {
     setSearch(e.target.value);
   };
   return (
-    <div className="w-full h-full bg-slate-900">
+    <div className="w-full h-full bg-slate-900 min-h-screen">
       <BrowserRouter>
         <ChakraProvider>
           <GameProvider>
             <div className="relative">
-              <header className="fixed top-0 left-0 right-0 z-10 bg-slate-800 flex pl-10 pr-10 pt-4 pb-4 drop-shadow-xl">
+              <header className="fixed top-0 left-0 right-0 z-10 bg-slate-800 flex px-10 py-4 drop-shadow-xl">
                 <nav className="flex">
                   <Link to="/">
                     <Button colorScheme="blue">All Games</Button>
@@ -32,7 +32,7 @@ function App() {
                   </div>
                 </nav>
               </header>
-              <div className="w-full h-full pl-10 pr-10 pt-10">
+              <div className="w-full h-full p-10">
                 <Routes>
                   <Route path="/" element={<Search search={search} />} />
                   <Route path="/details/:id" element={<Details />} />

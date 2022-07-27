@@ -64,7 +64,7 @@ export const Search: React.FC<{ search: string }> = ({ search }) => {
 
   return (
     <>
-      <div className="w-full h-full z-0 mt-10 pb-10">
+      <div className="w-full h-full z-0 mt-16 pb-10">
         <>{renderGrid()}</>
       </div>
     </>
