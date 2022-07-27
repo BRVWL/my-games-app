@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { ChakraProvider, Input } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import { Search } from "./pages/Search";
+import { Details } from "./pages/Details";
+import { GameProvider } from "./pages/Search/hooks";
 
 function App() {
+  const [search, setSearch] = React.useState("");
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-full bg-slate-900">
+      <BrowserRouter>
+        <ChakraProvider>
+          <GameProvider>
+            <div className="relative">
+              <header className="fixed top-0 left-0 right-0 z-10 bg-slate-800 flex pl-10 pr-10 pt-4 pb-4 drop-shadow-xl">
+                <nav className="flex">
+                  <Link to="/">
+                    <Button colorScheme="blue">All Games</Button>
+                  </Link>
+                  <div className="bg-slate-100 rounded-lg ml-10 w-[300px]">
+                    <Input
+                      value={search}
+                      onChange={handleSearch}
+                      variant="outline"
+                      placeholder="Search by name"
+                    />
+                  </div>
+                </nav>
+              </header>
+              <div className="w-full h-full pl-10 pr-10 pt-10">
+                <Routes>
+                  <Route path="/" element={<Search search={search} />} />
+                  <Route path="/details/:id" element={<Details />} />
+                </Routes>
+              </div>
+            </div>
+          </GameProvider>
+        </ChakraProvider>
+      </BrowserRouter>
     </div>
   );
 }
